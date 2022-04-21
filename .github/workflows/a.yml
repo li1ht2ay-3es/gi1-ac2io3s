@@ -1,0 +1,15 @@
+on:
+  # push:
+  workflow_dispatch:
+
+
+jobs:
+
+  mingw-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-ubuntu
+        with:
+          auto: true
+          token: ${{ secrets.token }}
