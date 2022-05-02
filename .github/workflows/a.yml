@@ -1,0 +1,12 @@
+on:
+  # push:
+  workflow_dispatch:
+
+
+jobs:
+
+  user-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/gi1-ac2io3s@user-action
