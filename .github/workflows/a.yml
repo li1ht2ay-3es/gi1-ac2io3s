@@ -1,0 +1,18 @@
+on:
+  # push:
+  workflow_dispatch:
+
+
+jobs:
+
+  rebase-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/gi1-ac2io3s@rebase-repo
+        with:
+          remote_repo: li1ht2ay-3es/gi1-ac2io3s
+          remote_branch: main
+
+          auto: true
+          token: ${{ secrets.token }}
