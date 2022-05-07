@@ -1,0 +1,15 @@
+on:
+  # push:
+  workflow_dispatch:
+
+
+jobs:
+
+  amend-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3es/gi1-ac2io3s@amend-repo
+        with:
+          auto: true
+          token: ${{ secrets.token }}

@@ -1,0 +1,75 @@
+description: Change last commit author for all branches
+
+
+inputs:
+  author:
+    description: Commit author
+    required: false
+    default: ''
+
+  email:
+    description: Commit email
+    required: false
+    default: ''
+
+  auto:
+    description: Automatic handling
+    required: false
+    default: ''
+
+  token:
+    description: Github token
+    required: false
+    default: ''
+
+
+runs:
+  using: composite
+
+  steps:
+    - if: inputs.auto != ''
+      uses: li1ht2ay-3es/gi1-ac2io3s@user-action
+
+
+
+    - if: inputs.auto != ''
+      uses: li1ht2ay-3es/gi1-ac2io3s@checkout-repo
+      with:
+        token: ${{ inputs.token }}
+
+
+
+    - shell: bash
+      run: |
+        branches=()
+        eval "$(git for-each-ref --shell --format='branches+=(%(refname:lstrip=3))' 'refs/remotes/origin')"
+
+
+        for branch in "${branches[@]}"; do
+          if [[ "$branch" == "HEAD" ]]; then
+            continue
+          fi
+
+
+          if [[ -z "${{ inputs.author }}" ]]; then
+            author=$(git config user.name)
+          else
+            author=${{ inputs.author }}
+          fi
+
+
+          if [[ -z "${{ inputs.email }}" ]]; then
+            email=$(git config user.email)
+          else
+            email=${{ inputs.email }}
+          fi
+
+
+          #####
+
+
+          git checkout $branch --quiet
+
+          git commit --amend --author="$author <$email>" --no-edit
+          git push -f origin HEAD:$branch
+        done
