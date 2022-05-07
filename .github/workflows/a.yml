@@ -1,0 +1,15 @@
+on:
+  # push:
+  workflow_dispatch:
+
+
+jobs:
+
+  checkout-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: li1ht2ay-3ey/gi1-ac2io3s@checkout-repo
+        with:
+          auto: true
+          token: ${{ secrets.token }}
