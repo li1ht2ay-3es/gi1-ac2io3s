@@ -1,0 +1,30 @@
+description: Erase last x commits
+
+
+inputs:
+  depth:
+    description: Commits to erase
+    required: false
+    default: 1
+
+
+runs:
+  using: composite
+
+  steps:
+    - shell: bash
+      run: |
+        depth=${{ inputs.depth }}
+
+
+        git fetch --deepen=$depth
+
+
+        ###########
+
+
+        max_merge=$(git rev-list --count HEAD)
+
+        if (( $max_merge > $depth )); then
+          git reset --hard HEAD~$depth
+        fi
