@@ -1,0 +1,48 @@
+description: Pushes empty date commit to keep repo alive
+
+
+inputs:
+  auto:
+    description: Automatic handling
+    required: false
+    default: ''
+
+  token:
+    description: Github token
+    required: false
+    default: ''
+
+  branch:
+    description: Target branch
+    required: false
+    default: ''
+
+
+runs:
+  using: composite
+
+  steps:
+    - if: inputs.auto != ''
+      uses: li1ht2ay-3es/gi1-ac2io3s@user-action
+
+
+    - if: inputs.auto != ''
+      uses: li1ht2ay-3es/gi1-ac2io3s@checkout-branch
+      with:
+        token: ${{ inputs.token }}
+        branch: ${{ inputs.branch }}
+
+
+    - shell: bash
+      run: |
+        git commit --allow-empty --date "$(date)" --reuse-message=HEAD
+
+
+    - uses: li1ht2ay-3es/gi1-ac2io3s@squash-branch
+      with:
+        depth: 1
+
+
+    - shell: bash
+      run: |
+        git push -f origin
