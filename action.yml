@@ -1,0 +1,41 @@
+description: Restore compiler build cache
+
+
+inputs:
+  name:
+    description: Cache branch name
+    required: false
+    default: cache
+
+
+runs:
+  using: composite
+
+  steps:
+    - shell: bash
+      run: |
+        if [[ -n $(git show-branch remotes/origin/${{ inputs.name }}) ]]; then
+          sleep 0.001
+
+          git merge origin/${{ inputs.name }} --allow-unrelated-histories
+          unzip -DD "cache.zip"
+
+
+          old_sha=$(<cache.hash)
+          new_sha=$(git log -1 --format="%H" -1 origin/upstream)
+
+
+          if [[ "$old_sha" != "$new_sha" ]]; then
+            git diff $(<cache.hash) $new_sha --name-only > diff.txt
+            <diff.txt xargs -d'\n' touch
+
+
+            printf "\n"
+            cat cache.hash
+            cat diff.txt
+
+            sleep 0.001
+          else
+            cat cache.hash
+          fi
+        fi
