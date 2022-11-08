@@ -39,7 +39,7 @@ runs:
           gcc-mingw-w64-i686 \
           mingw-w64-i686-dev
 
-        zip -9 -q -s 100m -r ${{ github.workspace }}/mingw_x86.zip \
+        zip -9 -q -r ${{ github.workspace }}/mingw_x86.zip \
           /usr/i686-w64-mingw32 \
           /usr/bin/i686-w64-mingw32-* \
           /usr/lib/gcc/i686-w64-mingw32/*-posix \
@@ -51,6 +51,9 @@ runs:
 
         printf "\n\n"
         i686-w64-mingw32-gcc-posix --version
+
+        split -b100m ${{ github.workspace }}/mingw_x86.zip
+        rm ${{ github.workspace }}/mingw_x86.zip
 
 
 
@@ -64,7 +67,7 @@ runs:
           gcc-mingw-w64-x86-64 \
           mingw-w64-x86-64-dev
 
-        zip -9 -q -s 100m -r ${{ github.workspace }}/mingw_x64.zip \
+        zip -9 -q -r ${{ github.workspace }}/mingw_x64.zip \
           /usr/x86_64-w64-mingw32 \
           /usr/bin/x86_64-w64-mingw32-* \
           /usr/lib/gcc/x86_64-w64-mingw32/*-posix \
@@ -76,6 +79,9 @@ runs:
 
         printf "\n\n"
         x86_64-w64-mingw32-gcc-posix --version
+
+        split -b100m ${{ github.workspace }}/mingw_x64.zip
+        rm ${{ github.workspace }}/mingw_x64.zip
 
 
 
