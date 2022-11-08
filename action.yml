@@ -39,21 +39,25 @@ runs:
           gcc-mingw-w64-i686 \
           mingw-w64-i686-dev
 
+
         zip -9 -q -r ${{ github.workspace }}/mingw_x86.zip \
           /usr/i686-w64-mingw32 \
           /usr/bin/i686-w64-mingw32-* \
           /usr/lib/gcc/i686-w64-mingw32/*-posix \
           /usr/share/mingw-w64
 
-        printf "\n\n===  Testing  ==="
 
+        printf "\n\n===  Testing  ===\n\n"
         unzip -l ${{ github.workspace }}/mingw_x86.zip
 
-        printf "\n\n"
+
+        printf "\n\n===  Version  ===\n\n"
         i686-w64-mingw32-gcc-posix --version
 
-        split -b100m ${{ github.workspace }}/mingw_x86.zip
-        rm ${{ github.workspace }}/mingw_x86.zip
+
+        cd ${{ github.workspace }}
+        split --verbose -b100m mingw_x86.zip mingw_x86.
+        rm mingw_x86.zip
 
 
 
@@ -67,21 +71,25 @@ runs:
           gcc-mingw-w64-x86-64 \
           mingw-w64-x86-64-dev
 
+
         zip -9 -q -r ${{ github.workspace }}/mingw_x64.zip \
           /usr/x86_64-w64-mingw32 \
           /usr/bin/x86_64-w64-mingw32-* \
           /usr/lib/gcc/x86_64-w64-mingw32/*-posix \
           /usr/share/mingw-w64
 
-        printf "\n\n===  Testing  ==="
 
+        printf "\n\n===  Testing  ===\n\n"
         unzip -l ${{ github.workspace }}/mingw_x64.zip
 
-        printf "\n\n"
-        x86_64-w64-mingw32-gcc-posix --version
 
-        split -b100m ${{ github.workspace }}/mingw_x64.zip
-        rm ${{ github.workspace }}/mingw_x64.zip
+        printf "\n\n===  Version  ===\n\n"
+        i686-w64-mingw32-gcc-posix --version
+
+
+        cd ${{ github.workspace }}
+        split --verbose -b100m mingw_x64.zip mingw_x64.
+        rm mingw_x64.zip
 
 
 
