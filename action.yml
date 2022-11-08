@@ -37,9 +37,7 @@ runs:
           binutils-mingw-w64-i686 \
           g++-mingw-w64-i686 \
           gcc-mingw-w64-i686 \
-          mingw-w64-i686-dev \
-          gcc-multilib \
-          g++-multilib
+          mingw-w64-i686-dev
 
 
         zip -9 -q -r ${{ github.workspace }}/mingw_x86.zip \
@@ -71,9 +69,7 @@ runs:
           binutils-mingw-w64-x86-64 \
           g++-mingw-w64-x86-64 \
           gcc-mingw-w64-x86-64 \
-          mingw-w64-x86-64-dev \
-          gcc-multilib \
-          g++-multilib
+          mingw-w64-x86-64-dev
 
 
         zip -9 -q -r ${{ github.workspace }}/mingw_x64.zip \
