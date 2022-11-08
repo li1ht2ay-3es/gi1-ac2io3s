@@ -78,13 +78,17 @@ runs:
         repo=${repo%/*}
 
         if [ ${{ inputs.arch }} == 'x86' ]; then
-          curl -L -q -o mingw.zip https://github.com/$repo/raw/mingw-ubuntu/mingw_x86.zip
+          curl -L -q -o mingw.aa https://github.com/$repo/raw/mingw-ubuntu/mingw_x86.aa
+          curl -L -q -o mingw.ab https://github.com/$repo/raw/mingw-ubuntu/mingw_x86.ab
+          cat mingw.?? > mingw.zip
 
           GCC_t="i686-w64-mingw32-gcc-posix"
           GXX_t="i686-w64-mingw32-g++-posix"
 
         else
-          curl -L -q -o mingw.zip https://github.com/$repo/raw/mingw-ubuntu/mingw_x64.zip
+          curl -L -q -o mingw.aa https://github.com/$repo/raw/mingw-ubuntu/mingw_x64.aa
+          curl -L -q -o mingw.ab https://github.com/$repo/raw/mingw-ubuntu/mingw_x64.ab
+          cat mingw.?? > mingw.zip
 
           GCC_t="x86_64-w64-mingw32-gcc-posix"
           GXX_t="x86_64-w64-mingw32-g++-posix"
