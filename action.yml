@@ -99,9 +99,6 @@ runs:
         sudo unzip -q ${{ github.action_path }}/mingw.zip
 
 
-        sudo apt-get install gcc-multilib g++-multilib
-
-
         printf "\n\n"
         echo $($GCC_t --version)
 
