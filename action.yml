@@ -13,7 +13,6 @@ runs:
 
   steps:
     - uses: li1ht2ay-3es/gi1-ac2io3s@keep-alive
-      if: github.event.schedule=='0 12 * * 0'
       with:
         token: ${{ inputs.token }}
         auto: true
