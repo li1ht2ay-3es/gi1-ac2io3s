@@ -71,6 +71,7 @@ runs:
 
     - if: runner.os == 'Linux'
       shell: bash
+      name: "MinGW install"
       run: |
         if [ ${{ inputs.arch }} == 'x86' ]; then
           sudo apt-get install \
