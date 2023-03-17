@@ -70,33 +70,28 @@ runs:
 
 
     - if: runner.os == 'Linux'
-      working-directory: ${{ github.action_path }}
       shell: bash
       run: |
-        repo=${{ github.action_path }}
-        repo=${repo##*/_actions/}
-        repo=${repo%/*}
-
         if [ ${{ inputs.arch }} == 'x86' ]; then
-          curl -L -q -o mingw.aa https://github.com/$repo/raw/mingw-ubuntu/mingw_x86.aa
-          curl -L -q -o mingw.ab https://github.com/$repo/raw/mingw-ubuntu/mingw_x86.ab
-          cat mingw.?? > mingw.zip
+          sudo apt-get install \
+            binutils-mingw-w64-i686 \
+            g++-mingw-w64-i686 \
+            gcc-mingw-w64-i686 \
+            mingw-w64-i686-dev
 
           GCC_t="i686-w64-mingw32-gcc-posix"
           GXX_t="i686-w64-mingw32-g++-posix"
 
         else
-          curl -L -q -o mingw.aa https://github.com/$repo/raw/mingw-ubuntu/mingw_x64.aa
-          curl -L -q -o mingw.ab https://github.com/$repo/raw/mingw-ubuntu/mingw_x64.ab
-          cat mingw.?? > mingw.zip
+          sudo apt-get install \
+            binutils-mingw-w64-x86-64 \
+            g++-mingw-w64-x86-64 \
+            gcc-mingw-w64-x86-64 \
+            mingw-w64-x86-64-dev
 
           GCC_t="x86_64-w64-mingw32-gcc-posix"
           GXX_t="x86_64-w64-mingw32-g++-posix"
         fi
-
-
-        cd /
-        sudo unzip -q ${{ github.action_path }}/mingw.zip
 
 
         printf "\n\n"
