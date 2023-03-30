@@ -16,11 +16,3 @@ runs:
       with:
         token: ${{ inputs.token }}
         auto: true
-
-
-    - uses: li1ht2ay-3es/gi1-ac2io3s@mingw-ubuntu
-      with:
-        branch: mingw-ubuntu
-
-        token: ${{ inputs.token }}
-        auto: true
