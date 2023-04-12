@@ -82,6 +82,7 @@ runs:
 
           GCC_t="i686-w64-mingw32-gcc-posix"
           GXX_t="i686-w64-mingw32-g++-posix"
+          WINDRES_t="i686-w64-mingw32-windres-posix"
 
         else
           sudo apt-get install \
@@ -92,6 +93,7 @@ runs:
 
           GCC_t="x86_64-w64-mingw32-gcc-posix"
           GXX_t="x86_64-w64-mingw32-g++-posix"
+          WINDRES_t="x86_64-w64-mingw32-windres-posix"
         fi
 
 
@@ -101,7 +103,9 @@ runs:
         echo ""
         echo "MINGW_CC=$GCC_t"
         echo "MINGW_CXX=$GXX_t"
+        echo "MINGW_WINDRES=$WINDRES_t"
 
 
         echo "MINGW_CC=$GCC_t" >> $GITHUB_ENV
         echo "MINGW_CXX=$GXX_t" >> $GITHUB_ENV
+        echo "MINGW_WINDRES=$WINDRES_t" >> $GITHUB_ENV
