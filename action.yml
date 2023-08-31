@@ -15,7 +15,7 @@ inputs:
   branch:
     description: Target branch
     required: false
-    default: master
+    default: ''
 
 
 runs:
