@@ -10,7 +10,7 @@ inputs:
   token:
     description: Github token
     required: false
-    default: ${{ secrets.token }}
+    default: ''
 
   branch:
     description: Target branch
