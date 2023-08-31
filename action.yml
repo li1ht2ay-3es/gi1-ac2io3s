@@ -5,17 +5,17 @@ inputs:
   auto:
     description: Automatic handling
     required: false
-    default: ''
+    default: true
 
   token:
     description: Github token
     required: false
-    default: ''
+    default: ${{ secrets.token }}
 
   branch:
     description: Target branch
     required: false
-    default: ''
+    default: master
 
 
 runs:
