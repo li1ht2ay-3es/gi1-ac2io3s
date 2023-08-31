@@ -5,7 +5,7 @@ inputs:
   auto:
     description: Automatic handling
     required: false
-    default: true
+    default: ''
 
   token:
     description: Github token
