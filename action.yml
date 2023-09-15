@@ -99,6 +99,8 @@ runs:
 
         printf "\n\n"
         echo $($GCC_t --version)
+        echo $($GCC_t --verbose)
+
 
         echo ""
         echo "MINGW_CC=$GCC_t"
