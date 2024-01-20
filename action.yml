@@ -60,6 +60,7 @@ runs:
 
 
         git clone --depth ${{ inputs.depth }} --branch $branch --single-branch https://${{ inputs.token }}@github.com/${{ inputs.repository }}.git ${{ inputs.path }}
-        git reset --hard origin/$branch
+        cd ${{ inputs.path }}
 
+        git reset --hard origin/$branch
         git for-each-ref --shell 'refs/remotes/origin'
