@@ -110,7 +110,7 @@ runs:
 
           if (( $depth >= 1 )); then
             git reset --soft HEAD~$depth
-            git commit --amend --no-edit
+            git commit --amend --no-edit --allow-empty
 
             git push -f origin HEAD:$branch
           fi
